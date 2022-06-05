@@ -66,7 +66,10 @@ public class AuthController {
         if (userService.existsByName(signupRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: username is already taken!"));
         }
-        AppUser appUser = new AppUser(signupRequest.getUsername(), signupRequest.getPassword());
+        if (userService.existsByEmail(signupRequest.getEmail())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: email is already taken!"));
+        }
+        AppUser appUser = new AppUser(signupRequest.getUsername(), signupRequest.getEmail(), signupRequest.getPassword());
         Set<String> strRoles = signupRequest.getRole();
         Set<AppRole> roles = new HashSet<>();
         if (strRoles == null) {

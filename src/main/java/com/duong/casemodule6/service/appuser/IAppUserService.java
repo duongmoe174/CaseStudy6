@@ -7,4 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface IAppUserService extends IGerneralService<AppUser>, UserDetailsService {
     AppUser findByName(String name);
     Boolean existsByName(String name);
+
+    Boolean existsByEmail (String email);
 }

@@ -44,6 +44,11 @@ public class AppUserService implements IAppUserService{
         return appUserRepository.existsByName(name);
     }
 
+    @Override
+    public Boolean existsByEmail(String email) {
+        return appUserRepository.existsByEmail(email);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
