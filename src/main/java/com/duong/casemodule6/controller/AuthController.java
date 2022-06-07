@@ -13,26 +13,21 @@ import com.duong.casemodule6.service.appuser.IAppUserService;
 import com.duong.casemodule6.service.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 public class AuthController {
@@ -48,6 +43,8 @@ public class AuthController {
     @Autowired
     private IAppUserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -69,7 +66,11 @@ public class AuthController {
         if (userService.existsByEmail(signupRequest.getEmail())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: email is already taken!"));
         }
-        AppUser appUser = new AppUser(signupRequest.getUsername(), signupRequest.getEmail(), signupRequest.getPassword());
+
+        if(!signupRequest.getconfirmPassword().equals(signupRequest.getPassword())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: password not match!"));
+        }
+        AppUser appUser = new AppUser(signupRequest.getUsername(), signupRequest.getEmail(), passwordEncoder.encode(signupRequest.getPassword()));
         Set<String> strRoles = signupRequest.getRole();
         Set<AppRole> roles = new HashSet<>();
         if (strRoles == null) {

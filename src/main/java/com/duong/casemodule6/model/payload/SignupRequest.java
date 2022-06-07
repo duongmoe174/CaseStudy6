@@ -1,7 +1,5 @@
 package com.duong.casemodule6.model.payload;
 
-import com.duong.casemodule6.model.AppRole;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,6 +20,10 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    @NotBlank
+    @Size(min = 6, max = 40)
+    private String confirmPassword;
 
     public String getUsername() {
         return username;
@@ -53,5 +55,13 @@ public class SignupRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getconfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setconfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
