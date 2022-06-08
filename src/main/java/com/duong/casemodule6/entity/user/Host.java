@@ -14,7 +14,7 @@ public class Host {
     private String image;
     private String address;
     private String phone;
-    @ManyToOne
+    @OneToOne
     private AppUser appUser;
 
     public Host() {
