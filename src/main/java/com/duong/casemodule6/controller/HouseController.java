@@ -125,4 +125,13 @@ public class HouseController {
         return new ResponseEntity<>(houseOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/hosts/{id}")
+    public ResponseEntity<Host> getHostById(@PathVariable Long id){
+        Optional<Host> hostOptional = hostService.findById(id);
+        if (!hostOptional.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hostOptional.get(), HttpStatus.OK);
+    }
+
 }
