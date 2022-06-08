@@ -14,10 +14,17 @@ public class Guest {
     private String image;
     private String address;
     private String phone;
-    @ManyToOne
+    @OneToOne
     private AppUser appUser;
 
     public Guest() {
+    }
+
+    public Guest(String fullName, String image, String address, String phone) {
+        this.fullName = fullName;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Guest(Long id, String fullName, String image, String address, String phone, AppUser appUser) {
