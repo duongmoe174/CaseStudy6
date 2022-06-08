@@ -1,7 +1,7 @@
 package com.duong.casemodule6.repository;
 
-import com.duong.casemodule6.controller.entity.dto.nativequery.IAvailableForRentHouse;
-import com.duong.casemodule6.controller.entity.house.House;
+import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
+import com.duong.casemodule6.entity.house.House;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

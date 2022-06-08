@@ -1,4 +1,4 @@
-package com.duong.casemodule6.controller.entity.role;
+package com.duong.casemodule6.entity.role;
 
 public enum AppERole {
     ROLE_USER,

@@ -1,10 +1,10 @@
-package com.duong.casemodule6.controller.entity.user;
+package com.duong.casemodule6.entity.user;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "host")
-public class Host {
+@Table(name = "guest")
+public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,10 +15,17 @@ public class Host {
     @OneToOne
     private AppUser appUser;
 
-    public Host() {
+    public Guest() {
     }
 
-    public Host(Long id, String fullName, String image, String address, String phone, AppUser appUser) {
+    public Guest(String fullName, String image, String address, String phone) {
+        this.fullName = fullName;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public Guest(Long id, String fullName, String image, String address, String phone, AppUser appUser) {
         this.id = id;
         this.fullName = fullName;
         this.image = image;
@@ -27,7 +34,7 @@ public class Host {
         this.appUser = appUser;
     }
 
-    public Host(String fullName, String image, String address, String phone, AppUser appUser) {
+    public Guest(String fullName, String image, String address, String phone, AppUser appUser) {
         this.fullName = fullName;
         this.image = image;
         this.address = address;
@@ -35,7 +42,7 @@ public class Host {
         this.appUser = appUser;
     }
 
-    public Host(AppUser appUser) {
+    public Guest(AppUser appUser) {
         this.appUser = appUser;
     }
 

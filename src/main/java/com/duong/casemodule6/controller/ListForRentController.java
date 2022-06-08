@@ -1,6 +1,6 @@
 package com.duong.casemodule6.controller;
 
-import com.duong.casemodule6.controller.entity.dto.nativequery.IAvailableForRentHouse;
+import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
 import com.duong.casemodule6.service.house.IHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

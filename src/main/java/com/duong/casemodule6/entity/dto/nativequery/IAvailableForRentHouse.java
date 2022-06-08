@@ -1,4 +1,4 @@
-package com.duong.casemodule6.controller.entity.dto.nativequery;
+package com.duong.casemodule6.entity.dto.nativequery;
 
 public interface IAvailableForRentHouse {
     String getName();

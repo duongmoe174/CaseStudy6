@@ -1,8 +1,8 @@
 package com.duong.casemodule6.service.house;
 
 
-import com.duong.casemodule6.controller.entity.dto.nativequery.IAvailableForRentHouse;
-import com.duong.casemodule6.controller.entity.house.House;
+import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
+import com.duong.casemodule6.entity.house.House;
 import com.duong.casemodule6.repository.IHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

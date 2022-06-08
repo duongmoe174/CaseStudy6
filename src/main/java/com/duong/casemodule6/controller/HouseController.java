@@ -1,10 +1,10 @@
 package com.duong.casemodule6.controller;
 
-import com.duong.casemodule6.controller.entity.user.Host;
+import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.service.host.IHostService;
-import com.duong.casemodule6.controller.entity.dto.HouseForm;
-import com.duong.casemodule6.controller.entity.house.House;
-import com.duong.casemodule6.controller.entity.house.Room;
+import com.duong.casemodule6.entity.dto.HouseForm;
+import com.duong.casemodule6.entity.house.House;
+import com.duong.casemodule6.entity.house.Room;
 
 import com.duong.casemodule6.service.house.IHouseService;
 import com.duong.casemodule6.service.room.IRoomService;

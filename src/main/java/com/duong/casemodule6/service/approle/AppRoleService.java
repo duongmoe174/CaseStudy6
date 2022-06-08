@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.approle;
 
-import com.duong.casemodule6.controller.entity.role.AppRole;
+import com.duong.casemodule6.entity.role.AppRole;
 import com.duong.casemodule6.repository.IAppRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

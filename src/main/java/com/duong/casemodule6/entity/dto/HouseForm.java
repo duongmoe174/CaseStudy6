@@ -1,36 +1,29 @@
-package com.duong.casemodule6.controller.entity.house;
+package com.duong.casemodule6.entity.dto;
 
-import com.duong.casemodule6.controller.entity.user.Host;
+import com.duong.casemodule6.entity.house.Room;
+import com.duong.casemodule6.entity.user.Host;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
+
 import java.util.Set;
 
-@Entity
-@Table(name = "house")
-public class House {
-    @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+public class HouseForm {
     private Long id;
-
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable (name = "house_room", joinColumns = {@JoinColumn(name="house_id")},
-    inverseJoinColumns = {@JoinColumn(name = "room_id")})
     private Set<Room> room_category;
     private String address;
     private int numberOfBedroom;
     private int numberOfBathroom;
     private String description;
     private double price;
-    private String image;
+    private MultipartFile image;
     private Boolean status;
-    @ManyToOne
     private Host host;
 
-    public House() {
+    public HouseForm() {
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public HouseForm(Long id, String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -44,7 +37,7 @@ public class House {
         this.host = host;
     }
 
-    public House(String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public HouseForm(String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -121,11 +114,11 @@ public class House {
         this.price = price;
     }
 
-    public String getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 

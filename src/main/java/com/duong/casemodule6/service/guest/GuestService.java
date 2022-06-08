@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.guest;
 
-import com.duong.casemodule6.controller.entity.user.Guest;
+import com.duong.casemodule6.entity.user.Guest;
 import com.duong.casemodule6.repository.IGuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

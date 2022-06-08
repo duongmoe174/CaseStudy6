@@ -1,7 +1,7 @@
 package com.duong.casemodule6.service.appuser;
 
-import com.duong.casemodule6.controller.entity.user.AppUser;
-import com.duong.casemodule6.controller.entity.dto.UserPrinciple;
+import com.duong.casemodule6.entity.user.AppUser;
+import com.duong.casemodule6.entity.dto.UserPrinciple;
 import com.duong.casemodule6.repository.IAppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
 package com.duong.casemodule6.repository;
 
-import com.duong.casemodule6.controller.entity.user.Host;
+import com.duong.casemodule6.entity.user.Host;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.duong.casemodule6.controller.entity.dto;
+package com.duong.casemodule6.entity.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 
