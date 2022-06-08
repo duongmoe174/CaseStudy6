@@ -11,6 +11,7 @@ public class HouseForm {
     private Long id;
     private String name;
     private Set<Room> room_category;
+    private String address;
     private int numberOfBedroom;
     private int numberOfBathroom;
     private String description;
@@ -22,10 +23,11 @@ public class HouseForm {
     public HouseForm() {
     }
 
-    public HouseForm(Long id, String name, Set<Room> room_category, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
+    public HouseForm(Long id, String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
+        this.address = address;
         this.numberOfBedroom = numberOfBedroom;
         this.numberOfBathroom = numberOfBathroom;
         this.description = description;
@@ -35,9 +37,10 @@ public class HouseForm {
         this.host = host;
     }
 
-    public HouseForm(String name, Set<Room> room_category, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
+    public HouseForm(String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, MultipartFile image, Boolean status, Host host) {
         this.name = name;
         this.room_category = room_category;
+        this.address = address;
         this.numberOfBedroom = numberOfBedroom;
         this.numberOfBathroom = numberOfBathroom;
         this.description = description;
@@ -69,6 +72,14 @@ public class HouseForm {
 
     public void setRoom_category(Set<Room> room_category) {
         this.room_category = room_category;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getNumberOfBedroom() {
