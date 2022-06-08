@@ -1,15 +1,15 @@
 package com.duong.casemodule6.controller;
 
-import com.duong.casemodule6.entity.role.AppERole;
-import com.duong.casemodule6.entity.role.AppRole;
-import com.duong.casemodule6.entity.user.AppUser;
-import com.duong.casemodule6.entity.dto.JwtResponse;
-import com.duong.casemodule6.entity.dto.MessageResponse;
-import com.duong.casemodule6.entity.dto.UserPrinciple;
-import com.duong.casemodule6.entity.payload.LoginRequest;
-import com.duong.casemodule6.entity.payload.SignupRequest;
-import com.duong.casemodule6.entity.user.Guest;
-import com.duong.casemodule6.entity.user.Host;
+import com.duong.casemodule6.controller.entity.role.AppERole;
+import com.duong.casemodule6.controller.entity.role.AppRole;
+import com.duong.casemodule6.controller.entity.user.AppUser;
+import com.duong.casemodule6.controller.entity.dto.JwtResponse;
+import com.duong.casemodule6.controller.entity.dto.MessageResponse;
+import com.duong.casemodule6.controller.entity.dto.UserPrinciple;
+import com.duong.casemodule6.controller.entity.payload.LoginRequest;
+import com.duong.casemodule6.controller.entity.payload.SignupRequest;
+import com.duong.casemodule6.controller.entity.user.Guest;
+import com.duong.casemodule6.controller.entity.user.Host;
 import com.duong.casemodule6.service.approle.IAppRoleService;
 import com.duong.casemodule6.service.appuser.IAppUserService;
 import com.duong.casemodule6.service.guest.IGuestService;

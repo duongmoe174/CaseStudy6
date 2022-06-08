@@ -1,6 +1,6 @@
-package com.duong.casemodule6.entity.dto;
+package com.duong.casemodule6.controller.entity.dto;
 
-import com.duong.casemodule6.entity.user.AppUser;
+import com.duong.casemodule6.controller.entity.user.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

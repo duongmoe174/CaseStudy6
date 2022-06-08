@@ -1,10 +1,17 @@
 package com.duong.casemodule6.controller;
 
+<<<<<<< HEAD
 import com.duong.casemodule6.entity.dto.HouseForm;
 import com.duong.casemodule6.entity.house.House;
 import com.duong.casemodule6.entity.house.Room;
 import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.service.host.IHostService;
+=======
+import com.duong.casemodule6.controller.entity.dto.HouseForm;
+import com.duong.casemodule6.controller.entity.house.House;
+import com.duong.casemodule6.controller.entity.house.Room;
+
+>>>>>>> a9732d0f5a08f6cabce27e5ce621e45c0380f33c
 import com.duong.casemodule6.service.house.IHouseService;
 import com.duong.casemodule6.service.room.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,5 +131,7 @@ public class HouseController {
         }
         return new ResponseEntity<>(houseOptional.get(), HttpStatus.OK);
     }
+
+
 
 }

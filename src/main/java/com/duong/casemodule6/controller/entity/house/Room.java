@@ -1,4 +1,4 @@
-package com.duong.casemodule6.entity.house;
+package com.duong.casemodule6.controller.entity.house;
 
 import javax.persistence.*;
 
