@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.jwt;
 
-import com.duong.casemodule6.entity.dto.UserPrinciple;
+import com.duong.casemodule6.controller.entity.dto.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.duong.casemodule6.entity.dto;
+package com.duong.casemodule6.controller.entity.dto;
 
 public class MessageResponse {
     private String message;

@@ -1,6 +1,6 @@
 package com.duong.casemodule6.repository;
 
-import com.duong.casemodule6.entity.role.AppRole;
+import com.duong.casemodule6.controller.entity.role.AppRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

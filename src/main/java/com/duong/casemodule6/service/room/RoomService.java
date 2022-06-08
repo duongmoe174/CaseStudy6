@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.room;
 
-import com.duong.casemodule6.entity.house.Room;
+import com.duong.casemodule6.controller.entity.house.Room;
 import com.duong.casemodule6.repository.IRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

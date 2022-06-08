@@ -1,6 +1,6 @@
-package com.duong.casemodule6.entity.house;
+package com.duong.casemodule6.controller.entity.house;
 
-import com.duong.casemodule6.entity.user.Host;
+import com.duong.casemodule6.controller.entity.user.Host;
 
 import javax.persistence.*;
 import java.util.Set;

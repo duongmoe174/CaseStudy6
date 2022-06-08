@@ -1,7 +1,7 @@
-package com.duong.casemodule6.entity.dto;
+package com.duong.casemodule6.controller.entity.dto;
 
-import com.duong.casemodule6.entity.house.Room;
-import com.duong.casemodule6.entity.user.Host;
+import com.duong.casemodule6.controller.entity.house.Room;
+import com.duong.casemodule6.controller.entity.user.Host;
 import org.springframework.web.multipart.MultipartFile;
 
 

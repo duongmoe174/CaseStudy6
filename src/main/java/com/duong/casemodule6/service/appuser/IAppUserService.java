@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.appuser;
 
-import com.duong.casemodule6.entity.user.AppUser;
+import com.duong.casemodule6.controller.entity.user.AppUser;
 import com.duong.casemodule6.service.IGerneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
