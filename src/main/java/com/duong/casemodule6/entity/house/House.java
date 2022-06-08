@@ -17,6 +17,7 @@ public class House {
     @JoinTable (name = "house_room", joinColumns = {@JoinColumn(name="house_id")},
     inverseJoinColumns = {@JoinColumn(name = "room_id")})
     private Set<Room> room_category;
+    private String address;
     private int numberOfBedroom;
     private int numberOfBathroom;
     private String description;
@@ -29,10 +30,11 @@ public class House {
     public House() {
     }
 
-    public House(Long id, String name, Set<Room> room_category, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public House(Long id, String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
+        this.address = address;
         this.numberOfBedroom = numberOfBedroom;
         this.numberOfBathroom = numberOfBathroom;
         this.description = description;
@@ -42,9 +44,10 @@ public class House {
         this.host = host;
     }
 
-    public House(String name, Set<Room> room_category, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public House(String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
         this.name = name;
         this.room_category = room_category;
+        this.address = address;
         this.numberOfBedroom = numberOfBedroom;
         this.numberOfBathroom = numberOfBathroom;
         this.description = description;
@@ -76,6 +79,14 @@ public class House {
 
     public void setRoom_category(Set<Room> room_category) {
         this.room_category = room_category;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getNumberOfBedroom() {
