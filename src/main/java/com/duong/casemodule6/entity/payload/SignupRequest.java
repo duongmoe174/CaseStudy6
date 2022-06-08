@@ -1,4 +1,4 @@
-package com.duong.casemodule6.model.payload;
+package com.duong.casemodule6.entity.payload;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

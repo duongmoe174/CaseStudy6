@@ -1,6 +1,6 @@
 package com.duong.casemodule6.service.approle;
 
-import com.duong.casemodule6.model.AppRole;
+import com.duong.casemodule6.entity.role.AppRole;
 import com.duong.casemodule6.service.IGerneralService;
 
 import java.util.Optional;

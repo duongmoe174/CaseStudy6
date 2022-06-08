@@ -1,6 +1,6 @@
 package com.duong.casemodule6.repository;
 
-import com.duong.casemodule6.model.AppUser;
+import com.duong.casemodule6.entity.user.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

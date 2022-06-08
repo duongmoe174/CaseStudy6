@@ -1,13 +1,13 @@
 package com.duong.casemodule6.controller;
 
-import com.duong.casemodule6.model.AppERole;
-import com.duong.casemodule6.model.AppRole;
-import com.duong.casemodule6.model.AppUser;
-import com.duong.casemodule6.model.dto.JwtResponse;
-import com.duong.casemodule6.model.dto.MessageResponse;
-import com.duong.casemodule6.model.dto.UserPrinciple;
-import com.duong.casemodule6.model.payload.LoginRequest;
-import com.duong.casemodule6.model.payload.SignupRequest;
+import com.duong.casemodule6.entity.role.AppERole;
+import com.duong.casemodule6.entity.role.AppRole;
+import com.duong.casemodule6.entity.user.AppUser;
+import com.duong.casemodule6.entity.dto.JwtResponse;
+import com.duong.casemodule6.entity.dto.MessageResponse;
+import com.duong.casemodule6.entity.dto.UserPrinciple;
+import com.duong.casemodule6.entity.payload.LoginRequest;
+import com.duong.casemodule6.entity.payload.SignupRequest;
 import com.duong.casemodule6.service.approle.IAppRoleService;
 import com.duong.casemodule6.service.appuser.IAppUserService;
 import com.duong.casemodule6.service.jwt.JwtService;
@@ -21,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
+@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private IAppRoleService appRoleService;

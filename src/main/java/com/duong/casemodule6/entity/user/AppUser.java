@@ -1,4 +1,6 @@
-package com.duong.casemodule6.model;
+package com.duong.casemodule6.entity.user;
+
+import com.duong.casemodule6.entity.role.AppRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
