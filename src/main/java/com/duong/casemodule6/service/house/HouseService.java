@@ -1,6 +1,7 @@
 package com.duong.casemodule6.service.house;
 
 
+import com.duong.casemodule6.controller.entity.dto.nativequery.IAvailableForRentHouse;
 import com.duong.casemodule6.controller.entity.house.House;
 import com.duong.casemodule6.repository.IHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class HouseService implements IHouseService{
     @Override
     public void remove(Long id) {
         houseRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<IAvailableForRentHouse> getListAvailableForRentHouse() {
+        return houseRepository.getListAvailableForRentHouse();
     }
 }
