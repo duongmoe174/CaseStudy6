@@ -21,10 +21,10 @@ public class TestRoleController {
         return "User content";
     }
 
-    @GetMapping("/mod")
-    @PreAuthorize("hasRole('MODERATOR')")
+    @GetMapping("/host")
+    @PreAuthorize("hasRole('HOST')")
     public String moderatorAccess() {
-        return "Moderator Board.";
+        return "Host Board.";
     }
 
     @GetMapping("/admin")
