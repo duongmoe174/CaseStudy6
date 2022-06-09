@@ -3,9 +3,11 @@ package com.duong.casemodule6.service.order;
 import com.duong.casemodule6.entity.order.Order;
 import com.duong.casemodule6.repository.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class OrderService implements IOrderService {
     @Autowired
     private IOrderRepository orderRepository;
