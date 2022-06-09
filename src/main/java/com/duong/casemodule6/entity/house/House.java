@@ -18,10 +18,10 @@ public class House {
     inverseJoinColumns = {@JoinColumn(name = "room_id")})
     private Set<Room> room_category;
     private String address;
-    private int numberOfBedroom;
-    private int numberOfBathroom;
+    private String numberOfBedroom;
+    private String numberOfBathroom;
     private String description;
-    private double price;
+    private String price;
     private String image;
     private Boolean status;
     @ManyToOne
@@ -30,7 +30,7 @@ public class House {
     public House() {
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Boolean status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -44,7 +44,7 @@ public class House {
         this.host = host;
     }
 
-    public House(String name, Set<Room> room_category, String address, int numberOfBedroom, int numberOfBathroom, String description, double price, String image, Boolean status, Host host) {
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Boolean status, Host host) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -89,19 +89,19 @@ public class House {
         this.address = address;
     }
 
-    public int getNumberOfBedroom() {
+    public String getNumberOfBedroom() {
         return numberOfBedroom;
     }
 
-    public void setNumberOfBedroom(int numberOfBedroom) {
+    public void setNumberOfBedroom(String numberOfBedroom) {
         this.numberOfBedroom = numberOfBedroom;
     }
 
-    public int getNumberOfBathroom() {
+    public String getNumberOfBathroom() {
         return numberOfBathroom;
     }
 
-    public void setNumberOfBathroom(int numberOfBathroom) {
+    public void setNumberOfBathroom(String numberOfBathroom) {
         this.numberOfBathroom = numberOfBathroom;
     }
 
@@ -113,11 +113,11 @@ public class House {
         this.description = description;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
