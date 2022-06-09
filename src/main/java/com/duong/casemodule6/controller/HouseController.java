@@ -136,6 +136,13 @@ public class HouseController {
         return new ResponseEntity<>(hostOptional.get(), HttpStatus.OK);
     }
 
-
+    @GetMapping("/search-by-filter")
+    public ResponseEntity<Iterable<House>> getHouseSearchDone(@RequestParam(name = "address") Optional<String> address,
+                                                              @RequestParam(name = "bedroom") Optional<String> bedroom,
+                                                              @RequestParam(name = "bathroom") Optional<String> bathroom,
+                                                              @RequestParam(name = "price") Optional<String> price) {
+        Iterable<House> houses = houseService.search9House(address.get(), bedroom.get(), bathroom.get(), price.get());
+        return new ResponseEntity<>(houses, HttpStatus.OK);
+    }
 
 }

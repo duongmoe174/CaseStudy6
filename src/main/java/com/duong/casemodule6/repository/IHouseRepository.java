@@ -11,4 +11,7 @@ public interface IHouseRepository extends CrudRepository<House, Long> {
 
     @Query(nativeQuery = true, value = "select name,price,image,address from house where status = false")
     Iterable<IAvailableForRentHouse> getListAvailableForRentHouse();
+
+    @Query(value = "call search_house(?1,?2,?3,?4)", nativeQuery = true)
+    Iterable<House> search9House(String address, String bedroom, String bathroom, String price);
 }

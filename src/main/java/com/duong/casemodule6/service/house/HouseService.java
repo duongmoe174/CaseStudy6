@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class HouseService implements IHouseService{
+public class HouseService implements IHouseService {
 
     @Autowired
     private IHouseRepository houseRepository;
@@ -39,4 +39,22 @@ public class HouseService implements IHouseService{
     public Iterable<IAvailableForRentHouse> getListAvailableForRentHouse() {
         return houseRepository.getListAvailableForRentHouse();
     }
+
+    @Override
+    public Iterable<House> search9House(String address, String bedroom, String bathroom, String price) {
+        if (address == "") {
+          address = "%%";
+        }
+        if (bedroom == "") {
+            bedroom = "%%";
+        }
+        if (bathroom == "") {
+            bathroom = "%%";
+        }
+        if (price == "") {
+            price = "%%";
+        }
+        return houseRepository.search9House(address, bedroom, bathroom, price);
+    }
+
 }
