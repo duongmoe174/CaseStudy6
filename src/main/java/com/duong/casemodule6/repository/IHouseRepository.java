@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface IHouseRepository extends CrudRepository<House, Long> {
 
@@ -14,4 +16,6 @@ public interface IHouseRepository extends CrudRepository<House, Long> {
 
     @Query(value = "call search_house(?1,?2,?3,?4)", nativeQuery = true)
     Iterable<House> search9House(String address, String bedroom, String bathroom, String price);
+
+    Iterable<House> findByNameContaining(String name);
 }

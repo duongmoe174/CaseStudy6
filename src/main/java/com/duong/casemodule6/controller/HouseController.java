@@ -145,4 +145,10 @@ public class HouseController {
         return new ResponseEntity<>(houses, HttpStatus.OK);
     }
 
+    @GetMapping("/search-by-name")
+    public ResponseEntity<Iterable<House>> findByName(@RequestParam(name = "name") String name) {
+        Iterable<House> houses = houseService.findByNameContaining(name);
+        return  new ResponseEntity<>(houses, HttpStatus.OK);
+    }
+
 }

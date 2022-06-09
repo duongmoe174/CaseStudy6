@@ -4,8 +4,12 @@ import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
 import com.duong.casemodule6.entity.house.House;
 import com.duong.casemodule6.service.IGerneralService;
 
+import java.util.Optional;
+
 public interface IHouseService extends IGerneralService<House> {
     Iterable<IAvailableForRentHouse> getListAvailableForRentHouse();
 
     Iterable<House> search9House(String address, String bedroom, String bathroom, String price);
+
+    Iterable<House> findByNameContaining(String name);
 }

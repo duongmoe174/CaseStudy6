@@ -57,4 +57,9 @@ public class HouseService implements IHouseService {
         return houseRepository.search9House(address, bedroom, bathroom, price);
     }
 
+    @Override
+    public Iterable<House> findByNameContaining(String name) {
+        return houseRepository.findByNameContaining(name);
+    }
+
 }
