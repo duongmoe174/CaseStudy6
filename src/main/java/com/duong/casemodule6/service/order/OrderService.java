@@ -1,0 +1,32 @@
+package com.duong.casemodule6.service.order;
+
+import com.duong.casemodule6.entity.order.Order;
+import com.duong.casemodule6.repository.IOrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Optional;
+
+public class OrderService implements IOrderService {
+    @Autowired
+    private IOrderRepository orderRepository;
+
+    @Override
+    public Iterable<Order> findAll() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public Optional<Order> findById(Long id) {
+        return orderRepository.findById(id);
+    }
+
+    @Override
+    public Order save(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Override
+    public void remove(Long id) {
+        orderRepository.deleteById(id);
+    }
+}
