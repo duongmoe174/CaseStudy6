@@ -1,23 +1,28 @@
 package com.duong.casemodule6.entity.user;
 
-import com.duong.casemodule6.entity.user.AppUser;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "guest")
 public class Guest {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
     private String image;
     private String address;
     private String phone;
-    @ManyToOne
+    @OneToOne
     private AppUser appUser;
 
     public Guest() {
+    }
+
+    public Guest(String fullName, String image, String address, String phone) {
+        this.fullName = fullName;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Guest(Long id, String fullName, String image, String address, String phone, AppUser appUser) {

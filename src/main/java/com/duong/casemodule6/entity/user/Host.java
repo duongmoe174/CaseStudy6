@@ -1,7 +1,5 @@
 package com.duong.casemodule6.entity.user;
 
-import com.duong.casemodule6.entity.user.AppUser;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +12,7 @@ public class Host {
     private String image;
     private String address;
     private String phone;
-    @ManyToOne
+    @OneToOne
     private AppUser appUser;
 
     public Host() {
