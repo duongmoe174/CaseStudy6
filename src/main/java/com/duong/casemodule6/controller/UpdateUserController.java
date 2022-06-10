@@ -1,7 +1,9 @@
 package com.duong.casemodule6.controller;
 
+import com.duong.casemodule6.entity.dto.ChangePasswordForm;
 import com.duong.casemodule6.entity.dto.GuestForm;
 import com.duong.casemodule6.entity.dto.HostForm;
+import com.duong.casemodule6.entity.dto.MessageResponse;
 import com.duong.casemodule6.entity.role.AppRole;
 import com.duong.casemodule6.entity.user.AppUser;
 import com.duong.casemodule6.entity.user.Guest;
@@ -13,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +30,8 @@ import java.util.Set;
 @RestController
 @RequestMapping("/profile")
 public class UpdateUserController {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private IAppUserService appUserService;
     @Autowired
@@ -113,5 +120,52 @@ public class UpdateUserController {
         editHost.setId(id);
         hostService.save(editHost);
         return new ResponseEntity<>(editHost, HttpStatus.OK);
+    }
+
+    @PostMapping("/guest/changePassword/{id}")
+    public ResponseEntity<?> changePasswordGuest (@PathVariable Long id, @RequestBody ChangePasswordForm changePasswordForm){
+        String oldPassword = changePasswordForm.getOldPassword();
+        String newPassword = changePasswordForm.getNewPassword();
+        String confirmPassword = changePasswordForm.getConfirmPassword();
+        Optional<Guest> optionalGuest = this.guestService.findById(id);
+        if (!optionalGuest.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        AppUser currentUser = optionalGuest.get().getAppUser();
+
+        if(!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Password wrong!"));
+        } if (!newPassword.equals(confirmPassword)) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Password not match"));
+        }
+        currentUser.setPassword(passwordEncoder.encode(newPassword));
+        currentUser.setId(optionalGuest.get().getAppUser().getId());
+        appUserService.save(currentUser);
+        optionalGuest.get().setId(id);
+        guestService.save(optionalGuest.get());
+        return ResponseEntity.ok().body(new MessageResponse("OK!"));
+    }
+    @PostMapping("/host/changePassword/{id}")
+    public ResponseEntity<?> changePasswordHost (@PathVariable Long id, @RequestBody ChangePasswordForm changePasswordForm){
+        String oldPassword = changePasswordForm.getOldPassword();
+        String newPassword = changePasswordForm.getNewPassword();
+        String confirmPassword = changePasswordForm.getConfirmPassword();
+        Optional<Host> optionalHost = this.hostService.findById(id);
+        if (!optionalHost.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        AppUser currentUser = optionalHost.get().getAppUser();
+
+        if(!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Password wrong!"));
+        } if (!newPassword.equals(confirmPassword)) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Password not match"));
+        }
+        currentUser.setPassword(passwordEncoder.encode(newPassword));
+        currentUser.setId(optionalHost.get().getAppUser().getId());
+        appUserService.save(currentUser);
+        optionalHost.get().setId(id);
+        hostService.save(optionalHost.get());
+        return ResponseEntity.ok().body(new MessageResponse("OK!"));
     }
 }
