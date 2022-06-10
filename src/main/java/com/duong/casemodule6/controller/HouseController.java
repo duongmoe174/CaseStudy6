@@ -44,9 +44,19 @@ public class HouseController {
         return roomService.findAll();
     }
 
+    @ModelAttribute("hosts")
+    private Iterable<Host> hosts(){
+        return hostService.findAll();
+    }
+
     @GetMapping("/room")
     public ResponseEntity<Iterable<Room>> showAllRoom(){
         return new ResponseEntity<>(roomService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/host")
+    public ResponseEntity<Iterable<Host>> showAllHost(){
+        return new ResponseEntity<>(hostService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/list")
