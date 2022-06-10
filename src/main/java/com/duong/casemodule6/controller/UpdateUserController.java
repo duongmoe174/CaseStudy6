@@ -29,6 +29,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/profile")
+@CrossOrigin("*")
 public class UpdateUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -41,6 +42,25 @@ public class UpdateUserController {
 
     @Autowired
     private IHostService hostService;
+
+    @GetMapping("/findGuestByAppUserId/{id}")
+    public ResponseEntity<Guest> findGuestByAppUser(@PathVariable Long id) {
+        Optional<Guest> guestOptional = Optional.ofNullable(guestService.findGuestByAppUser_Id(id));
+        if (!guestOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(guestOptional.get(), HttpStatus.OK);
+
+    }
+    @GetMapping("/findHostByAppUserId/{id}")
+    public ResponseEntity<Host> findHostByAppUser(@PathVariable Long id) {
+        Optional<Host> hostOptional = Optional.ofNullable(hostService.findHostByAppUser_Id(id));
+        if (!hostOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hostOptional.get(), HttpStatus.OK);
+
+    }
 
     @GetMapping("/guest/{id}")
     public ResponseEntity<Guest> getGuestById (@PathVariable Long id) {
