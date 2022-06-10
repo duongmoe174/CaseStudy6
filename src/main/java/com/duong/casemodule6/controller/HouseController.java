@@ -38,6 +38,7 @@ public class HouseController {
     @Autowired
     private IHostService hostService;
 
+
     @ModelAttribute("rooms")
     private Iterable<Room> rooms(){
         return roomService.findAll();
@@ -61,10 +62,10 @@ public class HouseController {
         String name = houseForm.getName();
         Set<Room> room_category = houseForm.getRoom_category();
         String address = houseForm.getAddress();
-        int numberOfBedroom = houseForm.getNumberOfBedroom();
-        int numberOfBathroom = houseForm.getNumberOfBathroom();
+        String numberOfBedroom = houseForm.getNumberOfBedroom();
+        String numberOfBathroom = houseForm.getNumberOfBathroom();
         String description = houseForm.getDescription();
-        double price = houseForm.getPrice();
+        String price = houseForm.getPrice();
         Boolean status = houseForm.getStatus();
         Host host = houseForm.getHost();
         try{
@@ -89,10 +90,10 @@ public class HouseController {
             String name = houseForm.getName();
             Set<Room> room_category = houseForm.getRoom_category();
             String address = houseForm.getAddress();
-            int numberOfBedroom = houseForm.getNumberOfBedroom();
-            int numberOfBathroom = houseForm.getNumberOfBathroom();
+            String numberOfBedroom = houseForm.getNumberOfBedroom();
+            String numberOfBathroom = houseForm.getNumberOfBathroom();
             String description = houseForm.getDescription();
-            double price = houseForm.getPrice();
+            String price = houseForm.getPrice();
             Boolean status = houseForm.getStatus();
             Host host = houseForm.getHost();
             try{
@@ -124,6 +125,15 @@ public class HouseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(houseOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/hosts/{id}")
+    public ResponseEntity<Host> getHostById(@PathVariable Long id){
+        Optional<Host> hostOptional = hostService.findById(id);
+        if (!hostOptional.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hostOptional.get(), HttpStatus.OK);
     }
 
 
