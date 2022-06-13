@@ -1,22 +1,21 @@
 package com.duong.casemodule6.entity.house;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "room")
-public class Room {
+@Table(name = "status_house")
+public class Status {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-
-    public Room() {
+    public Status() {
     }
 
-    public Room(Long id, String name) {
+    public Status(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -36,5 +35,4 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
-
 }

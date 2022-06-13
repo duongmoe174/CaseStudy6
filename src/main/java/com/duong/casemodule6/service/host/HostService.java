@@ -30,4 +30,9 @@ public class HostService implements IHostService{
     public void remove(Long id) {
         hostRepository.deleteById(id);
     }
+
+    @Override
+    public Host findHostByAppUser_Id(Long id) {
+        return hostRepository.findHostByAppUser_Id(id);
+    }
 }

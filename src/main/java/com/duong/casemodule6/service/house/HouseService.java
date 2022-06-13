@@ -39,4 +39,22 @@ public class HouseService implements IHouseService{
     public Iterable<IAvailableForRentHouse> getListAvailableForRentHouse() {
         return houseRepository.getListAvailableForRentHouse();
     }
+
+    @Override
+    public Iterable<House> getHomeListByFilter(String address, String bedroom, String bathroom, String price) {
+        if (address == "") {
+            address = "%%";
+        }
+        if (bedroom == "") {
+            bedroom = "%%";
+        }
+        if (bathroom == "") {
+            bathroom = "%%";
+        }
+        if (price == "") {
+            price = "%%";
+        }
+        return houseRepository.getHomeListByFilter(address, bedroom, bathroom, price);
+    }
+
 }

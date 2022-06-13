@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IHouseRepository extends CrudRepository<House, Long> {
 
-    @Query(nativeQuery = true, value = "select name,price,image,address from house where status = false")
+    @Query(nativeQuery = true, value = "select name,price,image,address from house where status_id = 1")
     Iterable<IAvailableForRentHouse> getListAvailableForRentHouse();
+
+    @Query(value = "call search_house(?1,?2,?3,?4)", nativeQuery = true)
+    Iterable<House> getHomeListByFilter(String address, String bedroom, String bathroom, String price);
 }

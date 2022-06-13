@@ -31,4 +31,9 @@ public class GuestService implements IGuestService {
     public void remove(Long id) {
         guestRepository.deleteById(id);
     }
+
+    @Override
+    public Guest findGuestByAppUser_Id(Long id) {
+        return guestRepository.findGuestByAppUser_Id(id);
+    }
 }
