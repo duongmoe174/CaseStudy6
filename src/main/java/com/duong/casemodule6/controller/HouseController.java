@@ -38,14 +38,25 @@ public class HouseController {
     @Autowired
     private IHostService hostService;
 
+
     @ModelAttribute("rooms")
     private Iterable<Room> rooms(){
         return roomService.findAll();
     }
 
+    @ModelAttribute("hosts")
+    private Iterable<Host> hosts(){
+        return hostService.findAll();
+    }
+
     @GetMapping("/room")
     public ResponseEntity<Iterable<Room>> showAllRoom(){
         return new ResponseEntity<>(roomService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/host")
+    public ResponseEntity<Iterable<Host>> showAllHost(){
+        return new ResponseEntity<>(hostService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/list")
@@ -61,10 +72,10 @@ public class HouseController {
         String name = houseForm.getName();
         Set<Room> room_category = houseForm.getRoom_category();
         String address = houseForm.getAddress();
-        int numberOfBedroom = houseForm.getNumberOfBedroom();
-        int numberOfBathroom = houseForm.getNumberOfBathroom();
+        String numberOfBedroom = houseForm.getNumberOfBedroom();
+        String numberOfBathroom = houseForm.getNumberOfBathroom();
         String description = houseForm.getDescription();
-        double price = houseForm.getPrice();
+        String price = houseForm.getPrice();
         Boolean status = houseForm.getStatus();
         Host host = houseForm.getHost();
         try{
@@ -89,10 +100,10 @@ public class HouseController {
             String name = houseForm.getName();
             Set<Room> room_category = houseForm.getRoom_category();
             String address = houseForm.getAddress();
-            int numberOfBedroom = houseForm.getNumberOfBedroom();
-            int numberOfBathroom = houseForm.getNumberOfBathroom();
+            String numberOfBedroom = houseForm.getNumberOfBedroom();
+            String numberOfBathroom = houseForm.getNumberOfBathroom();
             String description = houseForm.getDescription();
-            double price = houseForm.getPrice();
+            String price = houseForm.getPrice();
             Boolean status = houseForm.getStatus();
             Host host = houseForm.getHost();
             try{
@@ -126,6 +137,24 @@ public class HouseController {
         return new ResponseEntity<>(houseOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/hosts/{id}")
+    public ResponseEntity<Host> getHostById(@PathVariable Long id){
+        Optional<Host> hostOptional = hostService.findById(id);
+        if (!hostOptional.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hostOptional.get(), HttpStatus.OK);
+    }
 
+
+
+    @GetMapping("/search-by-filter")
+    public ResponseEntity<Iterable<House>> getHouseSearchDone(@RequestParam(name = "address") Optional<String> address,
+                                                              @RequestParam(name = "bedroom") Optional<String> bedroom,
+                                                              @RequestParam(name = "bathroom") Optional<String> bathroom,
+                                                              @RequestParam(name = "price") Optional<String> price) {
+        Iterable<House> houses = houseService.search9House(address.get(), bedroom.get(), bathroom.get(), price.get());
+        return new ResponseEntity<>(houses, HttpStatus.OK);
+    }
 
 }
