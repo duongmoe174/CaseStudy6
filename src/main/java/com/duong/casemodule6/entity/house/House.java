@@ -27,11 +27,26 @@ public class House {
     private Status status;
     @ManyToOne
     private Host host;
+    private int count;
 
     public House() {
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host) {
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host, int count) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+        this.host = host;
+        this.count = count;
+    }
+
+    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host, int count) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -43,7 +58,26 @@ public class House {
         this.image = image;
         this.status = status;
         this.host = host;
+        this.count = count;
     }
+
+    public House(String image, Status status) {
+        this.image = image;
+        this.status = status;
+    }
+
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Host host) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.host = host;
+    }
+
 
     public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host) {
         this.name = name;
@@ -144,5 +178,13 @@ public class House {
 
     public void setHost(Host host) {
         this.host = host;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
