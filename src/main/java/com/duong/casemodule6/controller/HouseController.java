@@ -1,6 +1,7 @@
 package com.duong.casemodule6.controller;
 
 import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
+import com.duong.casemodule6.entity.dto.nativequery.ITopFiveRank;
 import com.duong.casemodule6.entity.house.Status;
 import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.service.host.IHostService;
@@ -202,6 +203,11 @@ public class HouseController {
                                                               @RequestParam(name = "price") Optional<String> price) {
         Iterable<House> houses = houseService.getHomeListByFilter(address.get(), bedroom.get(), bathroom.get(), price.get());
         return new ResponseEntity<>(houses, HttpStatus.OK);
+    }
+
+    @GetMapping("/top-five-rank-list")
+    public ResponseEntity<Iterable<ITopFiveRank>> getListFiveRank() {
+        return new ResponseEntity<>(houseService.getListFiveRank(),HttpStatus.OK);
     }
 
 }
