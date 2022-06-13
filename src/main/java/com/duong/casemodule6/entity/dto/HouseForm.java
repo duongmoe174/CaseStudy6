@@ -1,6 +1,7 @@
 package com.duong.casemodule6.entity.dto;
 
 import com.duong.casemodule6.entity.house.Room;
+import com.duong.casemodule6.entity.house.Status;
 import com.duong.casemodule6.entity.user.Host;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,13 +19,13 @@ public class HouseForm {
     private String description;
     private String price;
     private MultipartFile image;
-    private Boolean status;
+    private Status status;
     private Host host;
 
     public HouseForm() {
     }
 
-    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Boolean status, Host host) {
+    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -38,7 +39,7 @@ public class HouseForm {
         this.host = host;
     }
 
-    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Boolean status, Host host) {
+    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, Host host) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -123,11 +124,11 @@ public class HouseForm {
         this.image = image;
     }
 
-    public Boolean getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

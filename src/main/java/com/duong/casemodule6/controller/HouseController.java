@@ -1,5 +1,6 @@
 package com.duong.casemodule6.controller;
 
+import com.duong.casemodule6.entity.house.Status;
 import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.service.host.IHostService;
 import com.duong.casemodule6.entity.dto.HouseForm;
@@ -8,6 +9,7 @@ import com.duong.casemodule6.entity.house.Room;
 
 import com.duong.casemodule6.service.house.IHouseService;
 import com.duong.casemodule6.service.room.IRoomService;
+import com.duong.casemodule6.service.status.IStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -38,7 +40,13 @@ public class HouseController {
     @Autowired
     private IHostService hostService;
 
+    @Autowired
+    private IStatusService statusService;
 
+    @ModelAttribute("status")
+    private Iterable<Status> statuses(){
+        return statusService.findAll();
+    }
     @ModelAttribute("rooms")
     private Iterable<Room> rooms(){
         return roomService.findAll();
@@ -47,6 +55,11 @@ public class HouseController {
     @ModelAttribute("hosts")
     private Iterable<Host> hosts(){
         return hostService.findAll();
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<Iterable<Status>> showAllStatus() {
+        return new ResponseEntity<>(statusService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/room")
@@ -76,7 +89,7 @@ public class HouseController {
         String numberOfBathroom = houseForm.getNumberOfBathroom();
         String description = houseForm.getDescription();
         String price = houseForm.getPrice();
-        Boolean status = houseForm.getStatus();
+        Status status = houseForm.getStatus();
         Host host = houseForm.getHost();
         try{
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpLoad+fileName));
@@ -104,7 +117,7 @@ public class HouseController {
             String numberOfBathroom = houseForm.getNumberOfBathroom();
             String description = houseForm.getDescription();
             String price = houseForm.getPrice();
-            Boolean status = houseForm.getStatus();
+            Status status = houseForm.getStatus();
             Host host = houseForm.getHost();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));

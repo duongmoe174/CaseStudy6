@@ -23,14 +23,15 @@ public class House {
     private String description;
     private String price;
     private String image;
-    private Boolean status;
+    @OneToOne
+    private Status status;
     @ManyToOne
     private Host host;
 
     public House() {
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Boolean status, Host host) {
+    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -44,7 +45,7 @@ public class House {
         this.host = host;
     }
 
-    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Boolean status, Host host) {
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -129,11 +130,11 @@ public class House {
         this.image = image;
     }
 
-    public Boolean getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
