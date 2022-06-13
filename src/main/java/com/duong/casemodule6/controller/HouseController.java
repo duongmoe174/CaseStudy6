@@ -118,8 +118,38 @@ public class HouseController {
             String numberOfBathroom = houseForm.getNumberOfBathroom();
             String description = houseForm.getDescription();
             String price = houseForm.getPrice();
-            Status status = houseForm.getStatus();
+            Status status = houseOptional.get().getStatus();
             Host host = houseForm.getHost();
+            try{
+                FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,host);
+            house.setId(id);
+            houseService.save(house);
+            return new ResponseEntity<>(house, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/status/{id}")
+    public ResponseEntity<House> editHouseStatus(@PathVariable Long id, @ModelAttribute HouseForm houseForm){
+        Optional<House> houseOptional = houseService.findById(id);
+        if (!houseOptional.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            MultipartFile multipartFile = houseForm.getImage();
+            String fileName = multipartFile.getOriginalFilename();
+            String fileUpLoad = env.getProperty("upload.path").toString();
+            String name = houseOptional.get().getName();
+            Set<Room> room_category = houseOptional.get().getRoom_category();
+            String address = houseOptional.get().getAddress();
+            String numberOfBedroom = houseOptional.get().getNumberOfBedroom();
+            String numberOfBathroom = houseOptional.get().getNumberOfBathroom();
+            String description = houseOptional.get().getDescription();
+            String price = houseOptional.get().getPrice();
+            Status status = houseForm.getStatus();
+            Host host = houseOptional.get().getHost();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
             } catch (IOException e) {
