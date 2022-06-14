@@ -2,6 +2,7 @@ package com.duong.casemodule6.entity.dto;
 
 import com.duong.casemodule6.entity.house.Room;
 import com.duong.casemodule6.entity.house.Status;
+import com.duong.casemodule6.entity.user.AppUser;
 import com.duong.casemodule6.entity.user.Host;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,36 +21,9 @@ public class HouseForm {
     private String price;
     private MultipartFile image;
     private Status status;
-    private Host host;
+    private AppUser host;
 
     public HouseForm() {
-    }
-
-    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, Host host) {
-        this.id = id;
-        this.name = name;
-        this.room_category = room_category;
-        this.address = address;
-        this.numberOfBedroom = numberOfBedroom;
-        this.numberOfBathroom = numberOfBathroom;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.status = status;
-        this.host = host;
-    }
-
-    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, Host host) {
-        this.name = name;
-        this.room_category = room_category;
-        this.address = address;
-        this.numberOfBedroom = numberOfBedroom;
-        this.numberOfBathroom = numberOfBathroom;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.status = status;
-        this.host = host;
     }
 
     public Long getId() {
@@ -132,11 +106,38 @@ public class HouseForm {
         this.status = status;
     }
 
-    public Host getHost() {
+    public AppUser getHost() {
         return host;
     }
 
-    public void setHost(Host host) {
+    public void setHost(AppUser host) {
+        this.host = host;
+    }
+
+    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser host) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+        this.host = host;
+    }
+
+    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser host) {
+        this.id = id;
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.status = status;
         this.host = host;
     }
 }

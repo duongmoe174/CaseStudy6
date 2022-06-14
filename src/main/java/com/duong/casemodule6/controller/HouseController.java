@@ -3,6 +3,7 @@ package com.duong.casemodule6.controller;
 import com.duong.casemodule6.entity.dto.nativequery.IAvailableForRentHouse;
 import com.duong.casemodule6.entity.dto.nativequery.ITopFiveRank;
 import com.duong.casemodule6.entity.house.Status;
+import com.duong.casemodule6.entity.user.AppUser;
 import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.service.host.IHostService;
 import com.duong.casemodule6.entity.dto.HouseForm;
@@ -92,7 +93,7 @@ public class HouseController {
         String description = houseForm.getDescription();
         String price = houseForm.getPrice();
         Status status = houseForm.getStatus();
-        Host host = houseForm.getHost();
+        AppUser host = houseForm.getHost();
         try{
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpLoad+fileName));
         } catch (IOException e) {
@@ -120,7 +121,7 @@ public class HouseController {
             String description = houseForm.getDescription();
             String price = houseForm.getPrice();
             Status status = houseOptional.get().getStatus();
-            Host host = houseForm.getHost();
+            AppUser host = houseForm.getHost();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
             } catch (IOException e) {
@@ -150,7 +151,7 @@ public class HouseController {
             String description = houseOptional.get().getDescription();
             String price = houseOptional.get().getPrice();
             Status status = houseForm.getStatus();
-            Host host = houseOptional.get().getHost();
+            AppUser host = houseOptional.get().getHost();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
             } catch (IOException e) {
