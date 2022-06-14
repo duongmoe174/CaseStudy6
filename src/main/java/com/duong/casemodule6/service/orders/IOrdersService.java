@@ -5,4 +5,6 @@ import com.duong.casemodule6.service.IGerneralService;
 import org.springframework.data.jpa.repository.Query;
 
 public interface IOrdersService extends IGerneralService<Orders> {
+    Iterable<Orders> getAllOrderStatusDoneByIdHouse(Long house_id);
+
 }

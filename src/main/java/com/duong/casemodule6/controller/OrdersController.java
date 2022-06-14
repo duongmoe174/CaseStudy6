@@ -40,6 +40,12 @@ public class OrdersController {
         return new ResponseEntity<>(ordersOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/statusDone/house/{id}")
+    public ResponseEntity<Iterable<Orders>> getAllOrderStatusDoneByIdHouse(@PathVariable Long id) {
+        Iterable<Orders> orders = ordersService.getAllOrderStatusDoneByIdHouse(id);
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Orders> save(@RequestBody Orders orders) {
         Optional<House> houseOptional = houseService.findById(orders.getHouse().getId());

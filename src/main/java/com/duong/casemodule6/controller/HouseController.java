@@ -211,4 +211,9 @@ public class HouseController {
         return new ResponseEntity<>(houseService.getListFiveRank(),HttpStatus.OK);
     }
 
+    @GetMapping("/random")
+    public ResponseEntity<Iterable<House>> random9House() {
+        return new ResponseEntity<>(houseService.random9House(), HttpStatus.OK);
+    }
+
 }

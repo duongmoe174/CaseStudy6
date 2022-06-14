@@ -63,4 +63,9 @@ public class HouseService implements IHouseService{
         return houseRepository.getListFiveRank();
     }
 
+    @Override
+    public Iterable<House> random9House() {
+        return houseRepository.random9House();
+    }
+
 }

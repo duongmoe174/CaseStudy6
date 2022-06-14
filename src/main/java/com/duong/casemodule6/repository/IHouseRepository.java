@@ -18,4 +18,7 @@ public interface IHouseRepository extends CrudRepository<House, Long> {
 
     @Query(value = "SELECT id, name, address, count FROM house ORDER BY count DESC limit 5", nativeQuery = true)
     Iterable<ITopFiveRank> getListFiveRank();
+
+    @Query(value = "select * from houses where status_id = 1 order by RAND() limit 9", nativeQuery = true)
+    Iterable<House> random9House();
 }

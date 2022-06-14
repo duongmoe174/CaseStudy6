@@ -31,4 +31,10 @@ public class OrdersService implements IOrdersService{
     public void remove(Long id) {
         ordersRepository.deleteById(id);
     }
+
+
+    @Override
+    public Iterable<Orders> getAllOrderStatusDoneByIdHouse(Long house_id) {
+        return ordersRepository.getAllOrderStatusDoneByIdHouse(house_id);
+    }
 }
