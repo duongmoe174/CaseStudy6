@@ -106,11 +106,11 @@ public class HouseForm {
         this.status = status;
     }
 
-    public AppUser getHost() {
+    public AppUser getUser() {
         return user;
     }
 
-    public void setHost(AppUser user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 

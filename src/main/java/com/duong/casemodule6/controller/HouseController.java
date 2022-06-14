@@ -93,7 +93,7 @@ public class HouseController {
         String description = houseForm.getDescription();
         String price = houseForm.getPrice();
         Status status = houseForm.getStatus();
-        AppUser user = houseForm.getHost();
+        AppUser user = houseForm.getUser();
         try{
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpLoad+fileName));
         } catch (IOException e) {
@@ -121,7 +121,7 @@ public class HouseController {
             String description = houseForm.getDescription();
             String price = houseForm.getPrice();
             Status status = houseOptional.get().getStatus();
-            AppUser user = houseForm.getHost();
+            AppUser user = houseForm.getUser();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
             } catch (IOException e) {
