@@ -15,8 +15,11 @@ public class StatusOrder {
         this.name = name;
     }
 
-    public StatusOrder(String name) {
-        this.name = name;
+    public StatusOrder() {
+    }
+
+    public StatusOrder(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

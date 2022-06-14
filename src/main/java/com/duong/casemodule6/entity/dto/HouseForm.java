@@ -21,7 +21,7 @@ public class HouseForm {
     private String price;
     private MultipartFile image;
     private Status status;
-    private AppUser host;
+    private AppUser user;
 
     public HouseForm() {
     }
@@ -107,14 +107,14 @@ public class HouseForm {
     }
 
     public AppUser getHost() {
-        return host;
+        return user;
     }
 
-    public void setHost(AppUser host) {
-        this.host = host;
+    public void setHost(AppUser user) {
+        this.user = user;
     }
 
-    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser host) {
+    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -124,10 +124,10 @@ public class HouseForm {
         this.price = price;
         this.image = image;
         this.status = status;
-        this.host = host;
+        this.user = user;
     }
 
-    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser host) {
+    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -138,6 +138,6 @@ public class HouseForm {
         this.price = price;
         this.image = image;
         this.status = status;
-        this.host = host;
+        this.user = user;
     }
 }

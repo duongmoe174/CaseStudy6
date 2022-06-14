@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "house")
+@Table(name = "houses")
 public class House {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
@@ -27,13 +27,13 @@ public class House {
     @OneToOne
     private Status status;
     @OneToOne
-    private AppUser host;
+    private AppUser user;
     private int count;
 
     public House() {
     }
 
-    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser host) {
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -43,7 +43,7 @@ public class House {
         this.price = price;
         this.image = image;
         this.status = status;
-        this.host = host;
+        this.user = user;
     }
 
     public Long getId() {
@@ -127,11 +127,11 @@ public class House {
     }
 
     public AppUser getHost() {
-        return host;
+        return user;
     }
 
-    public void setHost(AppUser host) {
-        this.host = host;
+    public void setHost(AppUser user) {
+        this.user = user;
     }
 
     public int getCount() {
@@ -142,7 +142,7 @@ public class House {
         this.count = count;
     }
 
-    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser host, int count) {
+    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -152,11 +152,11 @@ public class House {
         this.price = price;
         this.image = image;
         this.status = status;
-        this.host = host;
+        this.user = user;
         this.count = count;
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser host, int count) {
+    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
@@ -167,7 +167,7 @@ public class House {
         this.price = price;
         this.image = image;
         this.status = status;
-        this.host = host;
+        this.user = user;
         this.count = count;
     }
 }

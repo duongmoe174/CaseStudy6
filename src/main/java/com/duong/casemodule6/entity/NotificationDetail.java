@@ -30,6 +30,14 @@ public class NotificationDetail {
         this.user = user;
     }
 
+    public NotificationDetail(StatusNotification statusNotification, House house, Date createDay, String path, AppUser user) {
+        this.statusNotification = statusNotification;
+        this.house = house;
+        this.createDay = createDay;
+        this.path = path;
+        this.user = user;
+    }
+
     public NotificationDetail() {
     }
 

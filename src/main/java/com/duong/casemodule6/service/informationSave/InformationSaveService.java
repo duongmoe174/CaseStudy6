@@ -32,4 +32,14 @@ public class InformationSaveService implements IInformationSaveService{
     public void remove(Long id) {
         informationSaveRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<InformationSave> get10InformationSaveByIdUserActive(Long id) {
+        return informationSaveRepository.get10InformationSaveByIdUserActive(id);
+    }
+
+    @Override
+    public Iterable<InformationSave> getAllInformationSaveByIdUserIsActive(Long id) {
+        return informationSaveRepository.getAllInformationSaveByIdUserIsActive(id);
+    }
 }
