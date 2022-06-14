@@ -13,7 +13,7 @@ import java.util.Set;
 public class HouseForm {
     private Long id;
     private String name;
-    private Set<Room> room_category;
+    private Room room_category;
     private String address;
     private String numberOfBedroom;
     private String numberOfBathroom;
@@ -42,11 +42,11 @@ public class HouseForm {
         this.name = name;
     }
 
-    public Set<Room> getRoom_category() {
+    public Room getRoom_category() {
         return room_category;
     }
 
-    public void setRoom_category(Set<Room> room_category) {
+    public void setRoom_category(Room room_category) {
         this.room_category = room_category;
     }
 
@@ -114,7 +114,7 @@ public class HouseForm {
         this.user = user;
     }
 
-    public HouseForm(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
+    public HouseForm(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -127,7 +127,7 @@ public class HouseForm {
         this.user = user;
     }
 
-    public HouseForm(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
+    public HouseForm(Long id, String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, MultipartFile image, Status status, AppUser user) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;

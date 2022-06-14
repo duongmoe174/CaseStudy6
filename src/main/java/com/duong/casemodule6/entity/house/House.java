@@ -14,10 +14,9 @@ public class House {
     private Long id;
 
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable (name = "house_room", joinColumns = {@JoinColumn(name="house_id")},
-    inverseJoinColumns = {@JoinColumn(name = "room_id")})
-    private Set<Room> room_category;
+
+    @OneToOne
+    private Room room_category;
     private String address;
     private String numberOfBedroom;
     private String numberOfBathroom;
@@ -31,19 +30,6 @@ public class House {
     private int count;
 
     public House() {
-    }
-
-    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user) {
-        this.name = name;
-        this.room_category = room_category;
-        this.address = address;
-        this.numberOfBedroom = numberOfBedroom;
-        this.numberOfBathroom = numberOfBathroom;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.status = status;
-        this.user = user;
     }
 
     public Long getId() {
@@ -62,11 +48,11 @@ public class House {
         this.name = name;
     }
 
-    public Set<Room> getRoom_category() {
+    public Room getRoom_category() {
         return room_category;
     }
 
-    public void setRoom_category(Set<Room> room_category) {
+    public void setRoom_category(Room room_category) {
         this.room_category = room_category;
     }
 
@@ -126,11 +112,11 @@ public class House {
         this.status = status;
     }
 
-    public AppUser getHost() {
+    public AppUser getUser() {
         return user;
     }
 
-    public void setHost(AppUser user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 
@@ -142,7 +128,20 @@ public class House {
         this.count = count;
     }
 
-    public House(String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
+    public House(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+        this.user = user;
+    }
+
+    public House(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
         this.name = name;
         this.room_category = room_category;
         this.address = address;
@@ -156,7 +155,7 @@ public class House {
         this.count = count;
     }
 
-    public House(Long id, String name, Set<Room> room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
+    public House(Long id, String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user, int count) {
         this.id = id;
         this.name = name;
         this.room_category = room_category;
