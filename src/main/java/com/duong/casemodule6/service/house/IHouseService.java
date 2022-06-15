@@ -6,4 +6,5 @@ import com.duong.casemodule6.service.IGerneralService;
 
 public interface IHouseService extends IGerneralService<House> {
     Iterable<IAvailableForRentHouse> getListAvailableForRentHouse();
+    Iterable<House> random9House();
 }

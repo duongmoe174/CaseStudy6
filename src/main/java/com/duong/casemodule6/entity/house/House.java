@@ -72,6 +72,19 @@ public class House {
         this.host = host;
     }
 
+    public House(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Host host, int count) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.host = host;
+        this.count = count;
+    }
+
     public Long getId() {
         return id;
     }

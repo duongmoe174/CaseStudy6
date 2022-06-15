@@ -39,4 +39,9 @@ public class HouseService implements IHouseService{
     public Iterable<IAvailableForRentHouse> getListAvailableForRentHouse() {
         return houseRepository.getListAvailableForRentHouse();
     }
+
+    @Override
+    public Iterable<House> random9House() {
+        return houseRepository.random9House();
+    }
 }
