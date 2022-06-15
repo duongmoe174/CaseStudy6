@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IHouseRepository extends CrudRepository<House, Long> {
 
-    @Query(nativeQuery = true, value = "select name,price,image,address from house where status_id = 1")
+
+    @Query(nativeQuery = true, value = "select name,price,image,address from house where status = false")
     Iterable<IAvailableForRentHouse> getListAvailableForRentHouse();
 
     @Query(value = "call search_house(?1,?2,?3,?4)", nativeQuery = true)
@@ -18,4 +19,7 @@ public interface IHouseRepository extends CrudRepository<House, Long> {
 
     @Query(value = "SELECT id, name, address, count FROM house ORDER BY count DESC limit 5", nativeQuery = true)
     Iterable<ITopFiveRank> getListFiveRank();
+
+    @Query(nativeQuery = true, value = "select *from house where status_id = 1 order by RAND() limit 9")
+    Iterable<House> random9House();
 }

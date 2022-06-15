@@ -42,6 +42,11 @@ public class HouseService implements IHouseService{
     }
 
     @Override
+    public Iterable<House> random9House() {
+        return houseRepository.random9House();
+    }
+
+    @Override
     public Iterable<House> getHomeListByFilter(String address, String bedroom, String bathroom, String price) {
         if (address == "") {
             address = "%%";

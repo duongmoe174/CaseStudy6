@@ -11,4 +11,5 @@ public interface IHouseService extends IGerneralService<House> {
     Iterable<House> getHomeListByFilter(String address, String bedroom, String bathroom, String price);
 
     Iterable<ITopFiveRank> getListFiveRank();
+    Iterable<House> random9House();
 }
