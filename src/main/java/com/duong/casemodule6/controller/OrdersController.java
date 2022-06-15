@@ -50,10 +50,36 @@ public class OrdersController {
     public ResponseEntity<Orders> save(@RequestBody Orders orders) {
         Optional<House> houseOptional = houseService.findById(orders.getHouse().getId());
         orders.setStatusOrder(new StatusOrder(1L));
-        String path = "/admin/orders";
+        String path = "/host/orders";
         Optional<AppUser> userOptional = userService.findById(orders.getUser().getId());
         NotificationDetail notificationDetail = new NotificationDetail(new StatusNotification(1L), houseOptional.get(), new Date(), path, userOptional.get());
         notificationDetailService.save(notificationDetail);
         return new ResponseEntity<>(ordersService.save(orders), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/historyOrderTop5/{id}")
+    public ResponseEntity<Iterable<Orders>> find5OrderByOrderIdRent(@PathVariable Long id) {
+        Iterable<Orders> orders = ordersService.find5OrderByOrderIdRent(id);
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+    @GetMapping("/changeStatusCheckin/{id}")
+    public ResponseEntity<Orders> changeStatusCheckinOrder(@PathVariable Long id) {
+        Optional<Orders> orderOptional = ordersService.findById(id);
+        orderOptional.get().setStatusCheckIn(true);
+        ordersService.save(orderOptional.get());
+        return new ResponseEntity<>(orderOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/customerChangeStatusCanceled/{id}") //Dùng khi khách hàng hủy đơn ( tạo thông báo)
+    public ResponseEntity<Orders> customerChangeStatusOrderCanceled(@PathVariable Long id) {
+        Optional<Orders> orderOptional = ordersService.findById(id);
+        if (!orderOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        String path = "/host/history";
+        NotificationDetail notificationDetail = new NotificationDetail(new StatusNotification(2L), orderOptional.get().getHouse(), new Date(), path, orderOptional.get().getUser());
+        notificationDetailService.save(notificationDetail);
+        orderOptional.get().setStatusOrder(new StatusOrder(3L));
+        return new ResponseEntity<>(ordersService.save(orderOptional.get()), HttpStatus.OK);
     }
 }

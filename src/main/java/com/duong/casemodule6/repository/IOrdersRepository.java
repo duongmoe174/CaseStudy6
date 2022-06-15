@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface IOrdersRepository extends JpaRepository<Orders, Long> {
     @Query(value = "select * from orders join houses h on orders.house_id = h.id where status_order_id =2 AND orders.house_id = ?1", nativeQuery = true)
     Iterable<Orders> getAllOrderStatusDoneByIdHouse(Long house_id);
+
+    @Query(value = "select * from orders where user_id = ?1 order by check_out DESC limit 5", nativeQuery = true)
+    Iterable<Orders> find5OrderByOrderIdRent(Long user_id);
 }

@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface IOrdersService extends IGerneralService<Orders> {
     Iterable<Orders> getAllOrderStatusDoneByIdHouse(Long house_id);
 
+    Iterable<Orders> find5OrderByOrderIdRent(Long user_id);
+
 }
