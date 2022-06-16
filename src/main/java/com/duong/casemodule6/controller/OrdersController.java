@@ -50,7 +50,7 @@ public class OrdersController {
     public ResponseEntity<Orders> save(@RequestBody Orders orders) {
         Optional<House> houseOptional = houseService.findById(orders.getHouse().getId());
         orders.setStatusOrder(new StatusOrder(1L));
-        String path = "/host/orders";
+        String path = "/orders";
         Optional<AppUser> userOptional = userService.findById(orders.getUser().getId());
         NotificationDetail notificationDetail = new NotificationDetail(new StatusNotification(1L), houseOptional.get(), new Date(), path, userOptional.get());
         notificationDetailService.save(notificationDetail);
@@ -77,7 +77,7 @@ public class OrdersController {
         if (!orderOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        String path = "/host/history";
+        String path = "/history";
         NotificationDetail notificationDetail = new NotificationDetail(new StatusNotification(2L), orderOptional.get().getHouse(), new Date(), path, orderOptional.get().getUser());
         notificationDetailService.save(notificationDetail);
         orderOptional.get().setStatusOrder(new StatusOrder(3L));
