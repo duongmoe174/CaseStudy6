@@ -93,13 +93,14 @@ public class HouseController {
         String description = houseForm.getDescription();
         String price = houseForm.getPrice();
         Status status = houseForm.getStatus();
-        AppUser user = houseForm.getUser();
+        Host host = houseForm.getHost();
+        AppUser user = host.getAppUser();
         try{
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpLoad+fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,user);
+        House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,host,user);
         houseService.save(house);
         return new ResponseEntity<>(house, HttpStatus.CREATED);
     }

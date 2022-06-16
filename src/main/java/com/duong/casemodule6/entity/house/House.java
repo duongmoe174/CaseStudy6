@@ -26,6 +26,8 @@ public class House {
     @OneToOne
     private Status status;
     @OneToOne
+    private Host host;
+    @OneToOne
     private AppUser user;
     private int count;
 
@@ -126,6 +128,28 @@ public class House {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public House(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, Host host, AppUser user) {
+        this.name = name;
+        this.room_category = room_category;
+        this.address = address;
+        this.numberOfBedroom = numberOfBedroom;
+        this.numberOfBathroom = numberOfBathroom;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.status = status;
+        this.host = host;
+        this.user = user;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
+    public void setHost(Host host) {
+        this.host = host;
     }
 
     public House(String name, Room room_category, String address, String numberOfBedroom, String numberOfBathroom, String description, String price, String image, Status status, AppUser user) {

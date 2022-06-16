@@ -21,6 +21,8 @@ public class HouseForm {
     private String price;
     private MultipartFile image;
     private Status status;
+
+    private Host host;
     private AppUser user;
 
     public HouseForm() {
@@ -28,6 +30,14 @@ public class HouseForm {
 
     public Long getId() {
         return id;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
+    public void setHost(Host host) {
+        this.host = host;
     }
 
     public void setId(Long id) {
