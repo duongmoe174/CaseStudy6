@@ -10,6 +10,7 @@ public interface IInformationSaveRepository extends JpaRepository<InformationSav
     @Query(value = "select * from infomation_save join houses h on h.id = infomation_save.house_id where h.user_id = ?1 and infomation_save.is_active order by create_day Desc limit 10", nativeQuery = true)
     Iterable<InformationSave> get10InformationSaveByIdUserActive(Long id);
 
+
     @Query(value = "select * from infomation_save join houses h on h.id = infomation_save.house_id where h.user_id = ?1 and infomation_save.is_active = false order by create_day Desc limit 10", nativeQuery = true)
     Iterable<InformationSave> getAllInformationSaveByIdUserIsActive(Long id);
 }

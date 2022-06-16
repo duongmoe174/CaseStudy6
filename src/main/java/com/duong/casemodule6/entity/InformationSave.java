@@ -16,7 +16,7 @@ public class InformationSave {
     private StatusNotification statusNotification;
     @OneToOne
     private House house;
-    private Date creatDay;
+    private Date createDay;
     private String path;
     @OneToOne
     private AppUser user;
@@ -25,10 +25,10 @@ public class InformationSave {
     public InformationSave() {
     }
 
-    public InformationSave(StatusNotification statusNotification, House house, Date creatDay, String path, AppUser user, boolean isActive) {
+    public InformationSave(StatusNotification statusNotification, House house, Date createDay, String path, AppUser user, boolean isActive) {
         this.statusNotification = statusNotification;
         this.house = house;
-        this.creatDay = creatDay;
+        this.createDay = createDay;
         this.path = path;
         this.user = user;
         this.isActive = isActive;
@@ -58,12 +58,12 @@ public class InformationSave {
         this.house = house;
     }
 
-    public Date getCreatDay() {
-        return creatDay;
+    public Date getCreateDay() {
+        return createDay;
     }
 
-    public void setCreatDay(Date creatDay) {
-        this.creatDay = creatDay;
+    public void setCreateDay(Date creatDay) {
+        this.createDay = creatDay;
     }
 
     public String getPath() {
