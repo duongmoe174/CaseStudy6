@@ -122,4 +122,14 @@ public class OrdersController {
         }
         return new ResponseEntity<>(orderOptional.get(), HttpStatus.OK);
     }
+
+    @GetMapping("/changeStatusCanceled/{id}") // Dùng khi admin hủy đơn
+    public ResponseEntity<Orders> changeStatusOrderCanceled(@PathVariable Long id) {
+        Optional<Orders> orderOptional = ordersService.findById(id);
+        if (!orderOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        orderOptional.get().setStatusOrder(new StatusOrder(3L));
+        return new ResponseEntity<>(ordersService.save(orderOptional.get()), HttpStatus.OK);
+    }
 }
