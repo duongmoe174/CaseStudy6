@@ -122,13 +122,14 @@ public class HouseController {
             String description = houseForm.getDescription();
             String price = houseForm.getPrice();
             Status status = houseOptional.get().getStatus();
-            AppUser user = houseForm.getUser();
+            Host host = houseOptional.get().getHost();
+            AppUser user = host.getAppUser();
             try{
                 FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,user);
+            House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,host,user);
             house.setId(id);
             houseService.save(house);
             return new ResponseEntity<>(house, HttpStatus.OK);
@@ -141,9 +142,6 @@ public class HouseController {
         if (!houseOptional.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else{
-            MultipartFile multipartFile = houseForm.getImage();
-            String fileName = multipartFile.getOriginalFilename();
-            String fileUpLoad = env.getProperty("upload.path").toString();
             String name = houseOptional.get().getName();
             Room room_category = houseOptional.get().getRoom_category();
             String address = houseOptional.get().getAddress();
@@ -152,13 +150,9 @@ public class HouseController {
             String description = houseOptional.get().getDescription();
             String price = houseOptional.get().getPrice();
             Status status = houseForm.getStatus();
-            AppUser user = houseOptional.get().getUser();
-            try{
-                FileCopyUtils.copy(houseForm.getImage().getBytes(), new File(fileUpLoad+fileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,fileName,status,user);
+            Host host = houseOptional.get().getHost();
+            AppUser user = host.getAppUser();
+            House house = new House(name,room_category,address,numberOfBedroom,numberOfBathroom,description,price,houseOptional.get().getImage(),status,host,user);
             house.setId(id);
             houseService.save(house);
             return new ResponseEntity<>(house, HttpStatus.OK);
