@@ -1,5 +1,6 @@
 package com.duong.casemodule6.service.host;
 
+import com.duong.casemodule6.entity.dto.nativequery.IHistoryOfGuest;
 import com.duong.casemodule6.entity.user.Host;
 import com.duong.casemodule6.repository.IHostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,8 @@ public class HostService implements IHostService{
     public Host findHostByAppUser_Id(Long id) {
         return hostRepository.findHostByAppUser_Id(id);
     }
+
+    public IHistoryOfGuest getHistoryByGuestId(Long id){
+        return hostRepository.getHistoryByGuestId(id);
+    };
 }
