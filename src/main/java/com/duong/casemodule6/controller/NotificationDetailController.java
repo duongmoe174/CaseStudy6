@@ -1,5 +1,6 @@
 package com.duong.casemodule6.controller;
 
+import com.duong.casemodule6.entity.InformationSave;
 import com.duong.casemodule6.entity.NotificationDetail;
 import com.duong.casemodule6.service.informationSave.InformationSaveService;
 import com.duong.casemodule6.service.noficationDetail.INotificationDetailService;
@@ -23,4 +24,16 @@ public class NotificationDetailController {
         Iterable<NotificationDetail> notificationDetails = notificationDetailService.getAllNotificationDetailByIdUser(id);
         return new ResponseEntity<>(notificationDetails, HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Iterable<NotificationDetail>> deleteAllNotificationDetailByIdUser(@PathVariable Long id) {
+        Iterable<NotificationDetail> notificationDetails = notificationDetailService.getAllNotificationDetailByIdUser(id);
+        for (NotificationDetail notification : notificationDetails) {
+            InformationSave informationSave = new InformationSave(notification.getStatusNotification(), notification.getHouse(), notification.getCreateDay(), notification.getPath(), notification.getUser(), false);
+            informationSaveService.save(informationSave);
+            notificationDetailService.remove(notification.getId());
+        }
+        return new ResponseEntity<>(notificationDetails, HttpStatus.OK);
+    }
+
 }

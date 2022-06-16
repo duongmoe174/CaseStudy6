@@ -62,6 +62,7 @@ public class OrdersController {
         Iterable<Orders> orders = ordersService.find5OrderByOrderIdRent(id);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
+
     @GetMapping("/changeStatusCheckin/{id}")
     public ResponseEntity<Orders> changeStatusCheckinOrder(@PathVariable Long id) {
         Optional<Orders> orderOptional = ordersService.findById(id);
@@ -81,5 +82,44 @@ public class OrdersController {
         notificationDetailService.save(notificationDetail);
         orderOptional.get().setStatusOrder(new StatusOrder(3L));
         return new ResponseEntity<>(ordersService.save(orderOptional.get()), HttpStatus.OK);
+    }
+
+    @GetMapping("/processing/{currentUserId}")
+    public ResponseEntity<Iterable<Orders>> findAllOrderProcessingByUserId(@PathVariable Long currentUserId) {
+        Iterable<Orders> orders = ordersService.findAllOrderProcessingByUserId(currentUserId);
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
+    @GetMapping("/changeStatusDone/{id}")
+    public ResponseEntity<Orders> changeStatusOrderDone(@PathVariable Long id) {
+        Optional<Orders> orderOptional = ordersService.findById(id);
+        if (!orderOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        orderOptional.get().setStatusOrder(new StatusOrder(2L));
+        houseService.save(orderOptional.get().getHouse());
+        ordersService.save(orderOptional.get());
+        orderOptional.get().setStatusOrder(new StatusOrder(2L));
+        int current_count_rent = orderOptional.get().getHouse().getCount();
+        orderOptional.get().getHouse().setCount(current_count_rent + 1);
+
+        Long testCheckin = orderOptional.get().getCheckIn().getTime();
+        Long testCheckout = orderOptional.get().getCheckOut().getTime();
+        Iterable<Orders> ordersProcessing = ordersService.findAllOrderProcessingByHouseId(orderOptional.get().getHouse().getId());
+        for (Orders orderProcessing : ordersProcessing) {
+            Long timeCheckin = orderProcessing.getCheckIn().getTime();
+            Long timeCheckout = orderProcessing.getCheckOut().getTime();
+            if (timeCheckin >= testCheckin && timeCheckin < testCheckout) {
+                orderProcessing.setStatusOrder(new StatusOrder(3L));
+                ordersService.save(orderProcessing);
+            } else if (timeCheckout >= testCheckin && timeCheckout < testCheckout) {
+                orderProcessing.setStatusOrder(new StatusOrder(3L));
+                ordersService.save(orderProcessing);
+            } else if (timeCheckin <= testCheckin && timeCheckout >= testCheckout) {
+                orderProcessing.setStatusOrder(new StatusOrder(3L));
+                ordersService.save(orderProcessing);
+            }
+        }
+        return new ResponseEntity<>(orderOptional.get(), HttpStatus.OK);
     }
 }

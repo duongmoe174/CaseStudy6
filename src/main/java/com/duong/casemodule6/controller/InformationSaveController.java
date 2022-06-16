@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/infomationSave")
+@RequestMapping("/informationSave")
 @CrossOrigin("*")
 public class InformationSaveController {
     @Autowired

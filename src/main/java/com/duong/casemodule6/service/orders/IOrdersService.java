@@ -9,4 +9,7 @@ public interface IOrdersService extends IGerneralService<Orders> {
 
     Iterable<Orders> find5OrderByOrderIdRent(Long user_id);
 
+    Iterable<Orders> findAllOrderProcessingByUserId(Long user_id);
+
+    Iterable<Orders> findAllOrderProcessingByHouseId(Long house_id);
 }

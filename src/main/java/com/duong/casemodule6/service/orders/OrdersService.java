@@ -42,4 +42,14 @@ public class OrdersService implements IOrdersService{
     public Iterable<Orders> find5OrderByOrderIdRent(Long user_id) {
         return ordersRepository.find5OrderByOrderIdRent(user_id);
     }
+
+    @Override
+    public Iterable<Orders> findAllOrderProcessingByUserId(Long user_id) {
+        return ordersRepository.findAllOrderProcessingByUserId(user_id);
+    }
+
+    @Override
+    public Iterable<Orders> findAllOrderProcessingByHouseId(Long house_id) {
+        return ordersRepository.findAllOrderProcessingByHouseId(house_id);
+    }
 }

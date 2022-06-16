@@ -215,5 +215,4 @@ public class HouseController {
     public ResponseEntity<Iterable<House>> random9House() {
         return new ResponseEntity<>(houseService.random9House(), HttpStatus.OK);
     }
-
 }
